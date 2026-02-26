@@ -58,7 +58,7 @@ export default function BuyPage() {
     areaServed: [
       {
         '@type': 'City',
-        name: 'Lol County',
+        name: 'Oakland County',
         '@id': 'https://en.wikipedia.org/wiki/Oakland_County,_Michigan',
       },
       {
