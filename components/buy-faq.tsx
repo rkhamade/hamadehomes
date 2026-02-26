@@ -70,7 +70,7 @@ export function BuyFAQ() {
             className="mb-12 text-center"
           >
             <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">
-              Stupid Questions Answered
+              Buyer Questions Answered
             </h2>
             <p className="text-lg text-gray-600">
               Clear answers to help buyers start their home search with confidence
