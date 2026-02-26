@@ -21,7 +21,7 @@ export function CoverageArea() {
             Oakland County Focus
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            My primary focus is <span className="font-semibold text-gray-900">Oakland County</span>, including cities like Novi, Troy, Birmingham, Rochester, Royal Oak, and Bloomfield Hills. I also serve parts of <span className="font-semibold text-gray-900">Livingston County</span> and bring deep local knowledge to every transaction.
+            The primary focus is <span className="font-semibold text-gray-900">Oakland County</span>, including cities like Novi, Troy, Birmingham, Rochester, Royal Oak, and Bloomfield Hills. Additional service includes parts of <span className="font-semibold text-gray-900">Livingston County</span>, bringing deep local knowledge to every transaction.
           </p>
         </motion.div>
       </div>

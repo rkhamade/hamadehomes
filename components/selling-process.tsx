@@ -3,27 +3,27 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-export function BuyerProcess() {
+export function SellingProcess() {
   const steps = [
     {
       number: '01',
-      title: 'Consult',
-      description: 'Goals, timeline, and priorities are discussed in a brief, no-pressure conversation.',
+      title: 'Property Evaluation',
+      description: 'Market analysis and pricing strategy are developed using comparable sales data and current market conditions.',
     },
     {
       number: '02',
-      title: 'Search & Showings',
-      description: 'Buyers receive a tailored list of homes. Properties are toured and the search is refined based on feedback.',
+      title: 'Listing Preparation',
+      description: 'Property presentation is optimized and listing is positioned to attract qualified buyers in target market.',
     },
     {
       number: '03',
-      title: 'Offer & Negotiation',
-      description: 'Competitive offers are crafted with strategic terms and negotiated on behalf of clients.',
+      title: 'Offer and Negotiation',
+      description: 'Incoming offers are reviewed and negotiated to secure favorable terms and protect seller interests.',
     },
     {
       number: '04',
-      title: 'Closing',
-      description: 'Hamade Homes coordinates with lenders, title companies, and inspectors to ensure a smooth, on-time close.',
+      title: 'Closing Coordination',
+      description: 'Transaction timeline and closing details are managed through inspection, appraisal, and final settlement.',
     },
   ];
 
@@ -47,7 +47,7 @@ export function BuyerProcess() {
   };
 
   return (
-    <section className="bg-gray-50 py-16 sm:py-20 lg:py-24">
+    <section className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -57,10 +57,10 @@ export function BuyerProcess() {
           className="mb-12 text-center"
         >
           <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">
-            The Process
+            The Selling Process
           </h2>
           <p className="text-lg text-gray-600">
-            Four clear steps from first conversation to closing day
+            Four structured steps from initial evaluation to closing
           </p>
         </motion.div>
 
@@ -100,9 +100,9 @@ export function BuyerProcess() {
           className="mt-12 text-center text-gray-600"
         >
           <p>
-            Ready to sell your current home?{' '}
-            <Link href="/sell" className="font-semibold text-red-600 hover:text-red-700 transition-colors">
-              Learn about selling services
+            Looking to buy your next home?{' '}
+            <Link href="/buy" className="font-semibold text-red-600 hover:text-red-700 transition-colors">
+              Learn about buyer services
             </Link>
             .
           </p>

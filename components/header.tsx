@@ -69,6 +69,14 @@ export function Header({ onBookConsultClick, onAskQuestionClick }: HeaderProps) 
               >
                 Buy
               </Link>
+              <Link
+                href="/sell"
+                className={`text-sm font-medium transition-colors ${
+                  pathname === '/sell' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
+                }`}
+              >
+                Sell
+              </Link>
             </nav>
             <button
               onClick={onAskQuestionClick}
