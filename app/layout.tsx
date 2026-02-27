@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   title: 'Hamade Homes | Oakland County Real Estate',
   description: 'Expert real estate services in Oakland County and Livingston County. Strategic guidance for buyers, sellers, and investors.',
   metadataBase: new URL('https://hamadehomes.com'),
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/apple-icon.svg', type: 'image/svg+xml' },
+    ],
+  },
 };
 
 export default function RootLayout({
