@@ -98,7 +98,7 @@ export function Header({ onBookConsultClick, onAskQuestionClick }: HeaderProps) 
               </nav>
               <button
                 onClick={onAskQuestionClick}
-                className="hidden text-sm font-medium text-gray-700 hover:text-red-600 transition-colors lg:block"
+                className="hidden text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors lg:block"
               >
                 Ask the AI
               </button>
@@ -175,7 +175,7 @@ export function Header({ onBookConsultClick, onAskQuestionClick }: HeaderProps) 
                     setMobileMenuOpen(false);
                     onAskQuestionClick();
                   }}
-                  className="w-full text-left text-base font-medium text-gray-700 hover:text-red-600 transition-colors py-2"
+                  className="w-full text-left text-base font-medium text-gray-400 hover:text-gray-600 transition-colors py-2"
                 >
                   Ask the AI
                 </button>
