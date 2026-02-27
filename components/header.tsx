@@ -100,7 +100,7 @@ export function Header({ onBookConsultClick, onAskQuestionClick }: HeaderProps) 
                 onClick={onAskQuestionClick}
                 className="hidden text-sm font-medium text-gray-700 hover:text-red-600 transition-colors lg:block"
               >
-                Ask a Quick Question
+                Ask the AI
               </button>
               <Button
                 onClick={onBookConsultClick}
@@ -177,7 +177,7 @@ export function Header({ onBookConsultClick, onAskQuestionClick }: HeaderProps) 
                   }}
                   className="w-full text-left text-base font-medium text-gray-700 hover:text-red-600 transition-colors py-2"
                 >
-                  Ask a Quick Question
+                  Ask the AI
                 </button>
                 <Button
                   onClick={() => {
