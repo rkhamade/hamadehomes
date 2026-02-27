@@ -1,14 +1,15 @@
 'use client';
 
-import { Facebook, Linkedin, Instagram, Phone, Mail } from 'lucide-react';
+import { Facebook, Linkedin, Instagram, Mail } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function Footer() {
   return (
     <footer className="bg-white">
       <div className="bg-white py-12 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className="grid gap-8 lg:grid-cols-3">
             <div className="flex flex-col justify-center">
               <Image
                 src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Keller_Williams_Realty_logo.svg"
@@ -73,6 +74,26 @@ export function Footer() {
                 >
                   <Mail className="h-6 w-6" />
                 </a>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-8">
+              <div>
+                <h3 className="text-gray-900 font-semibold text-sm uppercase tracking-wider mb-4">Pages</h3>
+                <ul className="space-y-3">
+                  <li>
+                    <Link href="/" className="text-gray-700 hover:text-red-600 transition-colors">Home</Link>
+                  </li>
+                  <li>
+                    <Link href="/buy" className="text-gray-700 hover:text-red-600 transition-colors">Buy</Link>
+                  </li>
+                  <li>
+                    <Link href="/sell" className="text-gray-700 hover:text-red-600 transition-colors">Sell</Link>
+                  </li>
+                  <li>
+                    <Link href="/home-value" className="text-gray-700 hover:text-red-600 transition-colors">Home Value</Link>
+                  </li>
+                </ul>
               </div>
             </div>
 
