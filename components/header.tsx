@@ -95,6 +95,14 @@ export function Header({ onBookConsultClick, onAskQuestionClick }: HeaderProps) 
                 >
                   Sell
                 </Link>
+                <Link
+                  href="/home-value"
+                  className={`text-sm font-medium transition-colors ${
+                    pathname === '/home-value' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
+                  }`}
+                >
+                  Home Value
+                </Link>
               </nav>
               <button
                 onClick={onAskQuestionClick}
@@ -168,6 +176,16 @@ export function Header({ onBookConsultClick, onAskQuestionClick }: HeaderProps) 
                 }`}
               >
                 Sell
+              </Link>
+              <Link
+                href="/home-value"
+                className={`flex items-center px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                  pathname === '/home-value'
+                    ? 'bg-red-50 text-red-600'
+                    : 'text-gray-700 hover:bg-gray-50 hover:text-red-600'
+                }`}
+              >
+                Home Value
               </Link>
 
               <div className="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-3 px-4">
