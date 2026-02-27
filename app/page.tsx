@@ -11,6 +11,7 @@ import { FAQ } from '@/components/faq';
 import { FinalCTA } from '@/components/final-cta';
 import { Footer } from '@/components/footer';
 import { FAB } from '@/components/fab';
+import { CoverageArea } from '@/components/coverage-area';
 import { ConsultationModal } from '@/components/consultation-modal';
 
 export default function Home() {
@@ -47,6 +48,7 @@ export default function Home() {
       <TrustBar />
       <Services />
       <Differentiation />
+      <CoverageArea />
       <Testimonials />
       <FAQ />
       <FinalCTA onBookConsultClick={handleOpenModal} />
