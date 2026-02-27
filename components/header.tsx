@@ -98,8 +98,7 @@ export function Header({ onBookConsultClick, onAskQuestionClick }: HeaderProps) 
               </nav>
               <Button
                 onClick={onAskQuestionClick}
-                variant="outline"
-                className="hidden text-sm font-medium text-black border-gray-300 hover:border-gray-400 hover:bg-gray-50 lg:inline-flex"
+                className="hidden text-sm font-medium bg-gray-200 hover:bg-gray-300 text-black border-0 lg:inline-flex"
               >
                 Ask the AI
               </Button>
@@ -176,8 +175,7 @@ export function Header({ onBookConsultClick, onAskQuestionClick }: HeaderProps) 
                     setMobileMenuOpen(false);
                     onAskQuestionClick();
                   }}
-                  variant="outline"
-                  className="w-full text-base font-medium text-black border-gray-300 hover:border-gray-400 hover:bg-gray-50"
+                  className="w-full text-base font-medium bg-gray-200 hover:bg-gray-300 text-black border-0"
                 >
                   Ask the AI
                 </Button>
