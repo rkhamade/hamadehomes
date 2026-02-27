@@ -96,12 +96,13 @@ export function Header({ onBookConsultClick, onAskQuestionClick }: HeaderProps) 
                   Sell
                 </Link>
               </nav>
-              <button
+              <Button
                 onClick={onAskQuestionClick}
-                className="hidden text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors lg:block"
+                variant="outline"
+                className="hidden text-sm font-medium text-black border-gray-300 hover:border-gray-400 hover:bg-gray-50 lg:inline-flex"
               >
                 Ask the AI
-              </button>
+              </Button>
               <Button
                 onClick={onBookConsultClick}
                 className="hidden md:inline-flex bg-red-600 hover:bg-red-700 text-white font-semibold"
@@ -170,15 +171,16 @@ export function Header({ onBookConsultClick, onAskQuestionClick }: HeaderProps) 
                 Sell
               </Link>
               <div className="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-3 px-4">
-                <button
+                <Button
                   onClick={() => {
                     setMobileMenuOpen(false);
                     onAskQuestionClick();
                   }}
-                  className="w-full text-left text-base font-medium text-gray-400 hover:text-gray-600 transition-colors py-2"
+                  variant="outline"
+                  className="w-full text-base font-medium text-black border-gray-300 hover:border-gray-400 hover:bg-gray-50"
                 >
                   Ask the AI
-                </button>
+                </Button>
                 <Button
                   onClick={() => {
                     setMobileMenuOpen(false);
