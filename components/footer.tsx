@@ -47,28 +47,34 @@ export function Footer() {
 
               <div className="flex gap-4">
                 <a
-                  href="#"
+                  href="https://www.facebook.com/profile.php?id=61586679495293"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-900 hover:text-red-600 transition-colors"
                   aria-label="Facebook"
                 >
                   <Facebook className="h-6 w-6" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/robhamadehomes/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-900 hover:text-red-600 transition-colors"
                   aria-label="Instagram"
                 >
                   <Instagram className="h-6 w-6" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/robert-hamade-7a6289391/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-900 hover:text-red-600 transition-colors"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="h-6 w-6" />
                 </a>
                 <a
-                  href="#"
+                  href="mailto:robhamade@kw.com"
                   className="text-gray-900 hover:text-red-600 transition-colors"
                   aria-label="Email"
                 >
