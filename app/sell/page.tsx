@@ -13,6 +13,7 @@ import { Footer } from '@/components/footer';
 import { FAB } from '@/components/fab';
 import { ConsultationModal } from '@/components/consultation-modal';
 import { HomeValueModal } from '@/components/home-value-modal';
+import Link from 'next/link';
 import Script from 'next/script';
 
 export default function SellPage() {
@@ -113,6 +114,15 @@ export default function SellPage() {
         <SellingProcess />
         <SellerCoverageArea onRequestValueClick={handleOpenHomeValueModal} />
         <SellFAQ />
+        <div className="bg-white py-6 text-center">
+          <p className="text-sm text-gray-400">
+            Prefer a full valuation breakdown?{' '}
+            <Link href="/home-value" className="text-gray-500 underline underline-offset-2 hover:text-gray-700 transition-colors duration-200">
+              View the Home Value page
+            </Link>
+            .
+          </p>
+        </div>
         <FinalCTA onBookConsultClick={handleOpenConsultModal} />
         <Footer />
         <FAB onBookConsultClick={handleOpenConsultModal} />
