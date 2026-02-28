@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Check } from 'lucide-react';
+import { createClient } from '@supabase/supabase-js';
 
 interface ConsultationModalProps {
   open: boolean;
@@ -23,9 +24,16 @@ interface FormData {
   phone: string;
 }
 
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
 export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps) {
   const [step, setStep] = useState<Step>(1);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({
     intent: '',
     timeline: '',
@@ -59,26 +67,63 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
   const handleBack = () => {
     if (step > 1) {
       setStep((step - 1) as Step);
+      setError(null);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.phone) return;
 
-    setSubmitted(true);
-    setTimeout(() => {
-      onOpenChange(false);
-      setStep(1);
-      setSubmitted(false);
-      setFormData({
-        intent: '',
-        timeline: '',
-        name: '',
-        email: '',
-        phone: '',
-      });
-    }, 2000);
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const { error: insertError } = await supabase
+        .from('leads')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          address: '',
+          timeline: formData.timeline,
+          source: 'Consultation Modal',
+        });
+
+      if (insertError) throw insertError;
+
+      fetch(
+        `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/notify-new-lead`,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            address: '',
+            timeline: formData.timeline,
+            source: `Consultation Modal (${formData.intent})`,
+          }),
+        }
+      );
+
+      setSubmitted(true);
+      setTimeout(() => {
+        onOpenChange(false);
+        setStep(1);
+        setSubmitted(false);
+        setFormData({ intent: '', timeline: '', name: '', email: '', phone: '' });
+      }, 2000);
+    } catch (err) {
+      console.error('Error submitting consultation request:', err);
+      setError('Failed to submit request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -105,8 +150,8 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
         <DialogHeader>
           <DialogTitle className="text-2xl">
             {step === 1 && 'What brings you in?'}
-            {step === 2 && 'What\'s your timeline?'}
-            {step === 3 && 'Let\'s connect'}
+            {step === 2 && "What's your timeline?"}
+            {step === 3 && "Let's connect"}
           </DialogTitle>
         </DialogHeader>
 
@@ -127,27 +172,19 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
               <RadioGroup value={formData.intent} onValueChange={handleIntentChange}>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="buy" id="buy" />
-                  <Label htmlFor="buy" className="cursor-pointer font-normal">
-                    Buy
-                  </Label>
+                  <Label htmlFor="buy" className="cursor-pointer font-normal">Buy</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="sell" id="sell" />
-                  <Label htmlFor="sell" className="cursor-pointer font-normal">
-                    Sell
-                  </Label>
+                  <Label htmlFor="sell" className="cursor-pointer font-normal">Sell</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="invest" id="invest" />
-                  <Label htmlFor="invest" className="cursor-pointer font-normal">
-                    Invest
-                  </Label>
+                  <Label htmlFor="invest" className="cursor-pointer font-normal">Invest</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="questions" id="questions" />
-                  <Label htmlFor="questions" className="cursor-pointer font-normal">
-                    Just have questions
-                  </Label>
+                  <Label htmlFor="questions" className="cursor-pointer font-normal">Just have questions</Label>
                 </div>
               </RadioGroup>
             </div>
@@ -157,28 +194,20 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
             <div className="space-y-4">
               <RadioGroup value={formData.timeline} onValueChange={handleTimelineChange}>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="0-3" id="0-3" />
-                  <Label htmlFor="0-3" className="cursor-pointer font-normal">
-                    0–3 months
-                  </Label>
+                  <RadioGroupItem value="0-3 months" id="0-3" />
+                  <Label htmlFor="0-3" className="cursor-pointer font-normal">0–3 months</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="3-6" id="3-6" />
-                  <Label htmlFor="3-6" className="cursor-pointer font-normal">
-                    3–6 months
-                  </Label>
+                  <RadioGroupItem value="3-6 months" id="3-6" />
+                  <Label htmlFor="3-6" className="cursor-pointer font-normal">3–6 months</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="6-12" id="6-12" />
-                  <Label htmlFor="6-12" className="cursor-pointer font-normal">
-                    6–12 months
-                  </Label>
+                  <RadioGroupItem value="6-12 months" id="6-12" />
+                  <Label htmlFor="6-12" className="cursor-pointer font-normal">6–12 months</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="unsure" id="unsure" />
-                  <Label htmlFor="unsure" className="cursor-pointer font-normal">
-                    Not sure
-                  </Label>
+                  <RadioGroupItem value="Not sure" id="unsure" />
+                  <Label htmlFor="unsure" className="cursor-pointer font-normal">Not sure</Label>
                 </div>
               </RadioGroup>
             </div>
@@ -221,6 +250,12 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
             </div>
           )}
 
+          {error && (
+            <div className="mt-4 rounded-md bg-red-50 p-3 text-sm text-red-600">
+              {error}
+            </div>
+          )}
+
           <div className="mt-8 flex gap-3">
             {step > 1 && (
               <Button
@@ -228,6 +263,7 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
                 variant="outline"
                 onClick={handleBack}
                 className="flex-1"
+                disabled={isSubmitting}
               >
                 Back
               </Button>
@@ -247,10 +283,10 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
             ) : (
               <Button
                 type="submit"
-                disabled={!formData.name || !formData.email || !formData.phone}
+                disabled={!formData.name || !formData.email || !formData.phone || isSubmitting}
                 className="flex-1 bg-red-600 hover:bg-red-700"
               >
-                Book Consult
+                {isSubmitting ? 'Submitting...' : 'Book Consult'}
               </Button>
             )}
           </div>

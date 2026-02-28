@@ -23,6 +23,11 @@ interface FormData {
   timeline: string;
 }
 
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
 export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
   const [step, setStep] = useState<Step>(1);
   const [submitted, setSubmitted] = useState(false);
@@ -80,33 +85,44 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
     setError(null);
 
     try {
-      const supabase = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-      );
-
       const { error: insertError } = await supabase
-        .from('home_value_requests')
+        .from('leads')
         .insert({
-          property_address: formData.propertyAddress,
           name: formData.name,
           email: formData.email,
+          phone: '',
+          address: formData.propertyAddress,
           timeline: formData.timeline,
+          source: 'Home Value Modal',
         });
 
       if (insertError) throw insertError;
+
+      fetch(
+        `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/notify-new-lead`,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: '',
+            address: formData.propertyAddress,
+            timeline: formData.timeline,
+            source: 'Home Value Modal',
+          }),
+        }
+      );
 
       setSubmitted(true);
       setTimeout(() => {
         onOpenChange(false);
         setStep(1);
         setSubmitted(false);
-        setFormData({
-          propertyAddress: '',
-          name: '',
-          email: '',
-          timeline: '',
-        });
+        setFormData({ propertyAddress: '', name: '', email: '', timeline: '' });
       }, 2500);
     } catch (err) {
       console.error('Error submitting home value request:', err);
@@ -207,28 +223,20 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
             <div className="space-y-4">
               <RadioGroup value={formData.timeline} onValueChange={handleTimelineChange}>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="0-3" id="0-3" />
-                  <Label htmlFor="0-3" className="cursor-pointer font-normal">
-                    0–3 months
-                  </Label>
+                  <RadioGroupItem value="0-3 months" id="0-3" />
+                  <Label htmlFor="0-3" className="cursor-pointer font-normal">0–3 months</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="3-6" id="3-6" />
-                  <Label htmlFor="3-6" className="cursor-pointer font-normal">
-                    3–6 months
-                  </Label>
+                  <RadioGroupItem value="3-6 months" id="3-6" />
+                  <Label htmlFor="3-6" className="cursor-pointer font-normal">3–6 months</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="6-12" id="6-12" />
-                  <Label htmlFor="6-12" className="cursor-pointer font-normal">
-                    6–12 months
-                  </Label>
+                  <RadioGroupItem value="6-12 months" id="6-12" />
+                  <Label htmlFor="6-12" className="cursor-pointer font-normal">6–12 months</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="just-curious" id="just-curious" />
-                  <Label htmlFor="just-curious" className="cursor-pointer font-normal">
-                    Just curious about value
-                  </Label>
+                  <RadioGroupItem value="Just curious" id="just-curious" />
+                  <Label htmlFor="just-curious" className="cursor-pointer font-normal">Just curious about value</Label>
                 </div>
               </RadioGroup>
             </div>
