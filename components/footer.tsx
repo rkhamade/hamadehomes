@@ -12,7 +12,7 @@ export function Footer() {
           <div className="grid gap-8 lg:grid-cols-3">
             <div className="flex flex-col justify-center">
               <Image
-                src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Keller_Williams_Realty_logo.svg"
+                src="/KellerWilliams_Realty_Living_Logo_RGB.jpg"
                 alt="KW Living - Keller Williams Realty"
                 width={300}
                 height={80}
