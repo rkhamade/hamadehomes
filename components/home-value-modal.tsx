@@ -20,6 +20,7 @@ interface FormData {
   propertyAddress: string;
   name: string;
   email: string;
+  phone: string;
   timeline: string;
 }
 
@@ -37,6 +38,7 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
     propertyAddress: '',
     name: '',
     email: '',
+    phone: '',
     timeline: '',
   });
 
@@ -57,8 +59,8 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
       setError('Please enter a property address');
       return;
     }
-    if (step === 2 && (!formData.name.trim() || !formData.email.trim())) {
-      setError('Please enter your name and email');
+    if (step === 2 && (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim())) {
+      setError('Please enter your name, email, and phone');
       return;
     }
     if (step < 3) {
@@ -76,10 +78,14 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.propertyAddress || !formData.name || !formData.email || !formData.timeline) {
+    if (!formData.propertyAddress || !formData.name || !formData.email || !formData.phone || !formData.timeline) {
       setError('Please complete all fields');
       return;
     }
+
+    const nameParts = formData.name.trim().split(/\s+/);
+    const firstName = nameParts[0];
+    const lastName = nameParts.slice(1).join(' ');
 
     setIsSubmitting(true);
     setError(null);
@@ -90,7 +96,7 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
         .insert({
           name: formData.name,
           email: formData.email,
-          phone: '',
+          phone: formData.phone,
           address: formData.propertyAddress,
           timeline: formData.timeline,
           source: 'Home Value Modal',
@@ -109,7 +115,7 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
           body: JSON.stringify({
             name: formData.name,
             email: formData.email,
-            phone: '',
+            phone: formData.phone,
             address: formData.propertyAddress,
             timeline: formData.timeline,
             source: 'Home Value Modal',
@@ -117,12 +123,28 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
         }
       );
 
+      const zapierResponse = await fetch('https://hooks.zapier.com/hooks/catch/27149376/u7rvgl0/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email: formData.email,
+          phone: formData.phone,
+          leadType: 'Home Valuation',
+          timeline: formData.timeline,
+          propertyAddress: formData.propertyAddress,
+        }),
+      });
+
+      if (!zapierResponse.ok) throw new Error('Webhook delivery failed');
+
       setSubmitted(true);
       setTimeout(() => {
         onOpenChange(false);
         setStep(1);
         setSubmitted(false);
-        setFormData({ propertyAddress: '', name: '', email: '', timeline: '' });
+        setFormData({ propertyAddress: '', name: '', email: '', phone: '', timeline: '' });
       }, 2500);
     } catch (err) {
       console.error('Error submitting home value request:', err);
@@ -213,6 +235,17 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
                   value={formData.email}
                   onChange={handleInputChange('email')}
                   placeholder="your@email.com"
+                  required
+                />
+              </div>
+              <div>
+                <Label htmlFor="phone">Phone</Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleInputChange('phone')}
+                  placeholder="(123) 456-7890"
                   required
                 />
               </div>

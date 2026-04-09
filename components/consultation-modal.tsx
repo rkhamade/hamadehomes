@@ -75,6 +75,10 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.phone) return;
 
+    const nameParts = formData.name.trim().split(/\s+/);
+    const firstName = nameParts[0];
+    const lastName = nameParts.slice(1).join(' ');
+
     setIsSubmitting(true);
     setError(null);
 
@@ -110,6 +114,22 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
           }),
         }
       );
+
+      const zapierResponse = await fetch('https://hooks.zapier.com/hooks/catch/27149376/u7rvgl0/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email: formData.email,
+          phone: formData.phone,
+          leadType: formData.intent,
+          timeline: formData.timeline,
+          propertyAddress: '',
+        }),
+      });
+
+      if (!zapierResponse.ok) throw new Error('Webhook delivery failed');
 
       setSubmitted(true);
       setTimeout(() => {
