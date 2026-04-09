@@ -76,6 +76,22 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
     }
   };
 
+  const generateAiSummary = (data: FormData): string => {
+    const fullAddress = [
+      data.address,
+      data.addressLine2,
+      data.city,
+      data.zipCode,
+    ].filter(Boolean).join(', ');
+
+    const timelinePart =
+      data.timeline === 'Just curious'
+        ? 'and is currently just curious about the property value.'
+        : `and is planning to move within ${data.timeline}.`;
+
+    return `${data.name.trim()} is requesting a home valuation for ${fullAddress} ${timelinePart}`;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.address || !formData.city || !formData.zipCode || !formData.name || !formData.email || !formData.phone || !formData.timeline) {
@@ -86,6 +102,7 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
     const nameParts = formData.name.trim().split(/\s+/);
     const firstName = nameParts[0];
     const lastName = nameParts.slice(1).join(' ');
+    const aiSummary = generateAiSummary(formData);
 
     setIsSubmitting(true);
     setError(null);
@@ -102,6 +119,7 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
         addressLine2: formData.addressLine2,
         city: formData.city,
         zipCode: formData.zipCode,
+        aiSummary,
       });
 
       await fetch('https://hooks.zapier.com/hooks/catch/27149376/u7rvgl0/', {
