@@ -85,21 +85,22 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
     setError(null);
 
     try {
-      const zapierResponse = await fetch('https://hooks.zapier.com/hooks/catch/27149376/u7rvgl0/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          email: formData.email,
-          phone: formData.phone,
-          leadType: 'Home Valuation',
-          timeline: formData.timeline,
-          propertyAddress: formData.propertyAddress,
-        }),
+      const payload = JSON.stringify({
+        firstName,
+        lastName,
+        email: formData.email,
+        phone: formData.phone,
+        leadType: 'Home Valuation',
+        timeline: formData.timeline,
+        propertyAddress: formData.propertyAddress,
       });
 
-      if (!zapierResponse.ok) throw new Error('Webhook delivery failed');
+      await fetch('https://hooks.zapier.com/hooks/catch/27149376/u7rvgl0/', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: payload,
+      });
 
       setSubmitted(true);
       setTimeout(() => {
