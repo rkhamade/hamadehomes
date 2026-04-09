@@ -7,7 +7,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Check } from 'lucide-react';
-import { createClient } from '@supabase/supabase-js';
 
 interface HomeValueModalProps {
   open: boolean;
@@ -23,11 +22,6 @@ interface FormData {
   phone: string;
   timeline: string;
 }
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
   const [step, setStep] = useState<Step>(1);
@@ -91,38 +85,6 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
     setError(null);
 
     try {
-      const { error: insertError } = await supabase
-        .from('leads')
-        .insert({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          address: formData.propertyAddress,
-          timeline: formData.timeline,
-          source: 'Home Value Modal',
-        });
-
-      if (insertError) throw insertError;
-
-      fetch(
-        `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/notify-new-lead`,
-        {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            address: formData.propertyAddress,
-            timeline: formData.timeline,
-            source: 'Home Value Modal',
-          }),
-        }
-      );
-
       const zapierResponse = await fetch('https://hooks.zapier.com/hooks/catch/27149376/u7rvgl0/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
