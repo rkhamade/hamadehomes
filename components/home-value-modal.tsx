@@ -122,7 +122,7 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
         aiSummary,
       });
 
-      await fetch('https://hooks.zapier.com/hooks/catch/27149376/u7rvgl0/', {
+      await fetch(process.env.NEXT_PUBLIC_ZAPIER_WEBHOOK_URL!, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain' },
