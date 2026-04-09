@@ -65,6 +65,23 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
     }
   };
 
+  const generateAiSummary = (data: FormData): string => {
+    const intentMap: Record<string, string> = {
+      buy: 'buying a home',
+      sell: 'selling a home',
+      invest: 'investing in real estate',
+      questions: 'getting answers to real estate questions',
+    };
+    const intentText = intentMap[data.intent] || data.intent;
+
+    const timelinePart =
+      data.timeline === 'Not sure'
+        ? "and is not sure about their timeline."
+        : `and is looking to do so within ${data.timeline}.`;
+
+    return `${data.name.trim()} is interested in ${intentText} ${timelinePart}`;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.phone) return;
@@ -72,6 +89,7 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
     const nameParts = formData.name.trim().split(/\s+/);
     const firstName = nameParts[0];
     const lastName = nameParts.slice(1).join(' ');
+    const aiSummary = generateAiSummary(formData);
 
     setIsSubmitting(true);
     setError(null);
@@ -85,6 +103,7 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
         leadType: formData.intent,
         timeline: formData.timeline,
         propertyAddress: '',
+        aiSummary,
       });
 
       await fetch('https://hooks.zapier.com/hooks/catch/27149376/u7rvgl0/', {
