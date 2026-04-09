@@ -16,7 +16,10 @@ interface HomeValueModalProps {
 type Step = 1 | 2 | 3;
 
 interface FormData {
-  propertyAddress: string;
+  address: string;
+  addressLine2: string;
+  city: string;
+  zipCode: string;
   name: string;
   email: string;
   phone: string;
@@ -29,7 +32,10 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({
-    propertyAddress: '',
+    address: '',
+    addressLine2: '',
+    city: '',
+    zipCode: '',
     name: '',
     email: '',
     phone: '',
@@ -49,8 +55,8 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
   };
 
   const handleNext = () => {
-    if (step === 1 && !formData.propertyAddress.trim()) {
-      setError('Please enter a property address');
+    if (step === 1 && (!formData.address.trim() || !formData.city.trim() || !formData.zipCode.trim())) {
+      setError('Please enter a street address, city, and ZIP code');
       return;
     }
     if (step === 2 && (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim())) {
@@ -72,7 +78,7 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.propertyAddress || !formData.name || !formData.email || !formData.phone || !formData.timeline) {
+    if (!formData.address || !formData.city || !formData.zipCode || !formData.name || !formData.email || !formData.phone || !formData.timeline) {
       setError('Please complete all fields');
       return;
     }
@@ -92,7 +98,10 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
         phone: formData.phone,
         leadType: 'Home Valuation',
         timeline: formData.timeline,
-        propertyAddress: formData.propertyAddress,
+        address: formData.address,
+        addressLine2: formData.addressLine2,
+        city: formData.city,
+        zipCode: formData.zipCode,
       });
 
       await fetch('https://hooks.zapier.com/hooks/catch/27149376/u7rvgl0/', {
@@ -107,7 +116,7 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
         onOpenChange(false);
         setStep(1);
         setSubmitted(false);
-        setFormData({ propertyAddress: '', name: '', email: '', phone: '', timeline: '' });
+        setFormData({ address: '', addressLine2: '', city: '', zipCode: '', name: '', email: '', phone: '', timeline: '' });
       }, 2500);
     } catch (err) {
       console.error('Error submitting home value request:', err);
@@ -161,18 +170,46 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
           {step === 1 && (
             <div className="space-y-4">
               <div>
-                <Label htmlFor="propertyAddress">Full Property Address</Label>
+                <Label htmlFor="address">Street Address <span className="text-red-500">*</span></Label>
                 <Input
-                  id="propertyAddress"
-                  value={formData.propertyAddress}
-                  onChange={handleInputChange('propertyAddress')}
-                  placeholder="123 Main St, Novi, MI 48374"
+                  id="address"
+                  value={formData.address}
+                  onChange={handleInputChange('address')}
+                  placeholder="123 Main St"
                   required
                   autoFocus
                 />
-                <p className="mt-2 text-sm text-gray-500">
-                  Include street address, city, and ZIP code
-                </p>
+              </div>
+              <div>
+                <Label htmlFor="addressLine2">Address Line 2</Label>
+                <Input
+                  id="addressLine2"
+                  value={formData.addressLine2}
+                  onChange={handleInputChange('addressLine2')}
+                  placeholder="Apt, Suite, Unit (optional)"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label htmlFor="city">City <span className="text-red-500">*</span></Label>
+                  <Input
+                    id="city"
+                    value={formData.city}
+                    onChange={handleInputChange('city')}
+                    placeholder="Novi"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="zipCode">ZIP Code <span className="text-red-500">*</span></Label>
+                  <Input
+                    id="zipCode"
+                    value={formData.zipCode}
+                    onChange={handleInputChange('zipCode')}
+                    placeholder="48374"
+                    required
+                  />
+                </div>
               </div>
             </div>
           )}
