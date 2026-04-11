@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Check } from 'lucide-react';
+import { trackEvent } from '@/lib/gtag';
 
 interface HomeValueModalProps {
   open: boolean;
@@ -129,6 +130,10 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
         body: payload,
       });
 
+      trackEvent('home_value_submit', {
+        property_address: [formData.address, formData.city, formData.zipCode].filter(Boolean).join(', '),
+        timeline: formData.timeline,
+      });
       setSubmitted(true);
       setTimeout(() => {
         onOpenChange(false);

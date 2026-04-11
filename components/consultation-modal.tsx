@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Check } from 'lucide-react';
+import { trackEvent } from '@/lib/gtag';
 
 interface ConsultationModalProps {
   open: boolean;
@@ -113,6 +114,7 @@ export function ConsultationModal({ open, onOpenChange }: ConsultationModalProps
         body: payload,
       });
 
+      trackEvent('consult_submit');
       setSubmitted(true);
       setTimeout(() => {
         onOpenChange(false);

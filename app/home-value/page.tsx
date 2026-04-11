@@ -13,15 +13,18 @@ import { Footer } from '@/components/footer';
 import { FAB } from '@/components/fab';
 import { HomeValueModal } from '@/components/home-value-modal';
 import Script from 'next/script';
+import { trackEvent } from '@/lib/gtag';
 
 export default function HomeValuePage() {
   const [isHomeValueModalOpen, setIsHomeValueModalOpen] = useState(false);
 
   const handleOpenHomeValueModal = () => {
+    trackEvent('home_value_modal_open');
     setIsHomeValueModalOpen(true);
   };
 
   const handleOpenChatbot = () => {
+    trackEvent('ai_chat_open');
     if (typeof window !== 'undefined') {
       const win = window as any;
       if (win.VG_OPEN) {

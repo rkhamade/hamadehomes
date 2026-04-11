@@ -13,15 +13,18 @@ import { Footer } from '@/components/footer';
 import { FAB } from '@/components/fab';
 import { CoverageArea } from '@/components/coverage-area';
 import { ConsultationModal } from '@/components/consultation-modal';
+import { trackEvent } from '@/lib/gtag';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
+    trackEvent('consult_modal_open');
     setIsModalOpen(true);
   };
 
   const handleOpenChatbot = () => {
+    trackEvent('ai_chat_open');
     if (typeof window !== 'undefined') {
       // Try various VG API methods to open the chatbot
       const win = window as any;

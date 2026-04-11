@@ -12,15 +12,18 @@ import { Footer } from '@/components/footer';
 import { FAB } from '@/components/fab';
 import { ConsultationModal } from '@/components/consultation-modal';
 import Script from 'next/script';
+import { trackEvent } from '@/lib/gtag';
 
 export default function BuyPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
+    trackEvent('consult_modal_open');
     setIsModalOpen(true);
   };
 
   const handleOpenChatbot = () => {
+    trackEvent('ai_chat_open');
     if (typeof window !== 'undefined') {
       const win = window as any;
       if (win.VG_OPEN) {

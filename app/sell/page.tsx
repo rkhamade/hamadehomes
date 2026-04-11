@@ -15,20 +15,24 @@ import { ConsultationModal } from '@/components/consultation-modal';
 import { HomeValueModal } from '@/components/home-value-modal';
 import Link from 'next/link';
 import Script from 'next/script';
+import { trackEvent } from '@/lib/gtag';
 
 export default function SellPage() {
   const [isConsultModalOpen, setIsConsultModalOpen] = useState(false);
   const [isHomeValueModalOpen, setIsHomeValueModalOpen] = useState(false);
 
   const handleOpenConsultModal = () => {
+    trackEvent('consult_modal_open');
     setIsConsultModalOpen(true);
   };
 
   const handleOpenHomeValueModal = () => {
+    trackEvent('home_value_modal_open');
     setIsHomeValueModalOpen(true);
   };
 
   const handleOpenChatbot = () => {
+    trackEvent('ai_chat_open');
     if (typeof window !== 'undefined') {
       const win = window as any;
       if (win.VG_OPEN) {
