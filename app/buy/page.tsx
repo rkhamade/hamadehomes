@@ -92,8 +92,61 @@ export default function BuyPage() {
     },
   };
 
+  const buyFaqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': 'https://hamadehomes.com/buy/#faq',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: "What's the first step to start buying?",
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The first step is a brief consultation to discuss goals, timeline, and budget. From there, Hamade Homes connects buyers with trusted lenders if needed and begins curating properties that match their priorities.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do I need pre-approval before touring homes?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'While not required for touring, pre-approval is essential before making offers. It shows sellers buyers are serious and allows for quick action when the right home is found. Hamade Homes can connect buyers with reliable local lenders.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How competitive is Oakland County right now?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Market conditions vary by city and price point. During the consultation, current data for target areas is provided along with strategies to position buyers competitively without overpaying.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: "What does it cost to work with a buyer's agent?",
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "In most cases, the seller pays the buyer's agent commission. The specifics are explained during the consultation so buyers understand exactly how compensation works in their transaction.",
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I ask questions without booking a call?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Absolutely. Use the "Ask a Quick Question" button to reach Hamade Homes through chat. Support is available whether buyers are ready to start touring homes or just exploring their options.',
+        },
+      },
+    ],
+  };
+
   return (
     <>
+      <Script
+        id="buy-faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buyFaqSchema) }}
+      />
       <Script
         id="business-schema"
         type="application/ld+json"

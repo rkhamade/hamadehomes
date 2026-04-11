@@ -101,8 +101,61 @@ export default function SellPage() {
     },
   };
 
+  const sellFaqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': 'https://hamadehomes.com/sell/#faq',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How is home value determined?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Home value is determined through analysis of recent comparable sales, current market conditions, property condition and features, and positioning relative to active competition. Hamade Homes uses local market data specific to Oakland County submarkets to provide accurate valuation.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How long does it take to sell a home?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Time on market varies based on pricing strategy, property condition, and current market conditions. Properties priced accurately based on comparable sales typically attract qualified buyers within the first few weeks. Market timeline expectations are discussed during the initial property evaluation.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is preparation required before listing?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Preparation is not required but can impact final sale price and time on market. Recommendations for presentation improvements are provided during property evaluation. Sellers decide which preparation steps align with their goals and timeline.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is there any obligation to request a home value?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'No obligation exists. Home value requests provide sellers with market data and pricing analysis to inform their decisions. This information is useful whether selling immediately or planning for the future.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can questions be asked through chat?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. The chat assistant provides immediate answers to questions about the selling process, market conditions, or next steps. This option is available for sellers who prefer quick answers before scheduling a consultation.',
+        },
+      },
+    ],
+  };
+
   return (
     <>
+      <Script
+        id="sell-faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(sellFaqSchema) }}
+      />
       <Script
         id="business-schema"
         type="application/ld+json"

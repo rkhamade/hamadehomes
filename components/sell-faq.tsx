@@ -7,7 +7,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import Script from 'next/script';
 
 export function SellFAQ() {
   const faqs = [
@@ -38,29 +37,8 @@ export function SellFAQ() {
     },
   ];
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
-    <>
-      <Script
-        id="sell-faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema),
-        }}
-      />
-      <section className="bg-gray-50 py-16 sm:py-20 lg:py-24">
+    <section className="bg-gray-50 py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -102,6 +80,5 @@ export function SellFAQ() {
           </motion.div>
         </div>
       </section>
-    </>
   );
 }

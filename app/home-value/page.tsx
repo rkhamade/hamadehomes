@@ -42,45 +42,52 @@ export default function HomeValuePage() {
     }
   };
 
-  const faqs = [
-    {
-      question: 'How accurate is the valuation?',
-      answer:
-        'Valuation accuracy depends on the depth of comparable sales data and local market knowledge. Hamade Homes analyzes current active listings, recent closed sales, and submarket demand patterns specific to Oakland County to produce a structured pricing range rather than a single automated estimate.',
-    },
-    {
-      question: 'Is there any obligation?',
-      answer:
-        'No obligation exists. Requesting a home value analysis provides market data and pricing insight to inform your decisions. The information is useful whether considering selling immediately or planning for the future.',
-    },
-    {
-      question: 'How quickly is the report delivered?',
-      answer:
-        'A detailed home value analysis is typically prepared and delivered within 24 hours of submission. The timeline allows for thorough review of comparable sales and current competition rather than an instant automated result.',
-    },
-    {
-      question: 'Does this apply to Livingston County?',
-      answer:
-        'Yes. While Oakland County is the primary service area, Hamade Homes also covers parts of Livingston County. Properties in Livingston County are evaluated using the same structured process, with analysis tailored to local submarket conditions.',
-    },
-    {
-      question: 'Can questions be asked before listing?',
-      answer:
-        'Yes. Questions can be submitted through the chat assistant or by requesting a valuation and noting specific concerns in the process. Answers on pricing strategy, market timing, and preparation are available before any commitment to list.',
-    },
-  ];
-
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
+    '@id': 'https://hamadehomes.com/home-value/#faq',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How accurate is the valuation?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Valuation accuracy depends on the depth of comparable sales data and local market knowledge. Hamade Homes analyzes current active listings, recent closed sales, and submarket demand patterns specific to Oakland County to produce a structured pricing range rather than a single automated estimate.',
+        },
       },
-    })),
+      {
+        '@type': 'Question',
+        name: 'Is there any obligation?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'No obligation exists. Requesting a home value analysis provides market data and pricing insight to inform your decisions. The information is useful whether considering selling immediately or planning for the future.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How quickly is the report delivered?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'A detailed home value analysis is typically prepared and delivered within 24 hours of submission. The timeline allows for thorough review of comparable sales and current competition rather than an instant automated result.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Does this apply to Livingston County?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. While Oakland County is the primary service area, Hamade Homes also covers parts of Livingston County. Properties in Livingston County are evaluated using the same structured process, with analysis tailored to local submarket conditions.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can questions be asked before listing?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. Questions can be submitted through the chat assistant or by requesting a valuation and noting specific concerns in the process. Answers on pricing strategy, market timing, and preparation are available before any commitment to list.',
+        },
+      },
+    ],
   };
 
   const agentSchema = {
