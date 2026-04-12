@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,6 +13,23 @@ interface HomeValueHeroProps {
 
 export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValueHeroProps) {
   const [address, setAddress] = useState('');
+  const bgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let rafId: number;
+    const handleScroll = () => {
+      rafId = requestAnimationFrame(() => {
+        if (bgRef.current) {
+          bgRef.current.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -41,14 +58,28 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-gray-900">
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat animate-ken-burns"
+        ref={bgRef}
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url("https://images.pexels.com/photos/209315/pexels-photo-209315.jpeg?auto=compress&cs=tinysrgb&w=1600")',
           backgroundColor: '#1a1a1a',
+          willChange: 'transform',
+          top: '-15%',
+          bottom: '-15%',
+          height: '130%',
         }}
-      >
-        <div className="absolute inset-0 bg-black/65" />
-      </div>
+      />
+
+      <div
+        className="absolute inset-0 z-1 animate-dot-drift"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.45) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+          opacity: 0.07,
+        }}
+      />
+
+      <div className="absolute inset-0 z-2 bg-black/65" />
 
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
         <motion.div

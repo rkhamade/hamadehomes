@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 
@@ -9,6 +10,24 @@ interface HeroProps {
 }
 
 export function Hero({ onBookConsultClick, onAskQuestionClick }: HeroProps) {
+  const bgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let rafId: number;
+    const handleScroll = () => {
+      rafId = requestAnimationFrame(() => {
+        if (bgRef.current) {
+          bgRef.current.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -31,14 +50,28 @@ export function Hero({ onBookConsultClick, onAskQuestionClick }: HeroProps) {
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-gray-900">
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat animate-ken-burns"
+        ref={bgRef}
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url("https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1600")',
           backgroundColor: '#1a1a1a',
+          willChange: 'transform',
+          top: '-15%',
+          bottom: '-15%',
+          height: '130%',
         }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
+      />
+
+      <div
+        className="absolute inset-0 z-1 animate-dot-drift"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.45) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+          opacity: 0.07,
+        }}
+      />
+
+      <div className="absolute inset-0 z-2 bg-black/50" />
 
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
         <motion.div
