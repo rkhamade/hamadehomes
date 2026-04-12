@@ -30,7 +30,7 @@ export function HomeValueFinalCTA({ onGetValueClick, onAskQuestionClick }: HomeV
               size="lg"
               className="bg-red-600 hover:bg-red-700 text-white font-semibold text-lg h-auto py-3 px-8"
             >
-              Request Home Value
+              Get My True Market Value
             </Button>
             <Button
               onClick={onAskQuestionClick}

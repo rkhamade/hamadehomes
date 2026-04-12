@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { Header } from '@/components/header';
 import { HomeValueHero } from '@/components/home-value-hero';
-import { HomeValueAddress } from '@/components/home-value-address';
 import { HomeValueEstimates } from '@/components/home-value-estimates';
 import { HomeValueProcess } from '@/components/home-value-process';
 import { HomeValueCoverage } from '@/components/home-value-coverage';
@@ -160,7 +159,6 @@ export default function HomeValuePage() {
       <main className="min-h-screen">
         <Header onBookConsultClick={handleOpenHomeValueModal} onAskQuestionClick={handleOpenChatbot} />
         <HomeValueHero onGetValueClick={handleOpenHomeValueModal} onAskQuestionClick={handleOpenChatbot} />
-        <HomeValueAddress onGetValueClick={handleOpenHomeValueModal} />
         <HomeValueEstimates onGetValueClick={handleOpenHomeValueModal} />
         <HomeValueProcess />
         <HomeValueCoverage onGetValueClick={handleOpenHomeValueModal} />

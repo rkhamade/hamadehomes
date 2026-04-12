@@ -47,7 +47,7 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
           backgroundColor: '#1a1a1a',
         }}
       >
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-black/65" />
       </div>
 
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
@@ -60,17 +60,17 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
           <motion.h1
             variants={itemVariants}
             transition={{ duration: 0.8 }}
-            className="mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl"
+            className="mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl drop-shadow-lg"
           >
-            What Is Your Home Worth in Oakland County?
+            Get Your True Market Value in Oakland County
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-10 text-lg text-gray-200 sm:text-xl max-w-2xl mx-auto leading-relaxed"
+            className="mb-10 text-lg text-white/90 sm:text-xl max-w-2xl mx-auto leading-relaxed drop-shadow-md"
           >
-            Automated estimates often miss key variables. Accurate valuation requires analysis of comparable sales, current competition, and buyer demand.
+            Real pricing insight based on local comps, demand, and competition. Not an algorithm. Delivered within 24 hours.
           </motion.p>
 
           <motion.div
@@ -99,7 +99,7 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
               </Button>
             </form>
 
-            <p className="text-sm text-gray-400 mt-1">
+            <p className="text-sm text-white/75 mt-1">
               Free. No obligation. Delivered within 24 hours.
             </p>
 
@@ -107,7 +107,7 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
               <button
                 type="button"
                 onClick={onAskQuestionClick}
-                className="text-sm text-gray-400 hover:text-gray-200 underline underline-offset-2 transition-colors duration-200"
+                className="text-sm text-gray-200 hover:text-white underline underline-offset-2 transition-colors duration-200"
               >
                 Have a question first? Ask here.
               </button>

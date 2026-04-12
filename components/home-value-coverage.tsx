@@ -39,7 +39,7 @@ export function HomeValueCoverage({ onGetValueClick }: HomeValueCoverageProps) {
             size="lg"
             className="bg-red-600 hover:bg-red-700 text-white font-semibold text-lg h-auto py-3 px-8 mb-6"
           >
-            Get Property Valuation
+            Get My True Market Value
           </Button>
           <p className="text-sm text-gray-500">
             Ready to list?{' '}
