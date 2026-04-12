@@ -93,19 +93,3 @@
 .animate-dot-drift {
   animation: dot-drift 25s linear infinite;
 }
-
-@keyframes hero-drift {
-  0% {
-    background-position: center 30%;
-  }
-  50% {
-    background-position: 55% 30%;
-  }
-  100% {
-    background-position: center 30%;
-  }
-}
-
-.animate-hero-drift {
-  animation: hero-drift 22s ease-in-out infinite;
-}
