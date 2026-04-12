@@ -1,14 +1,19 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { ArrowRight } from 'lucide-react';
 
 interface HomeValueHeroProps {
-  onGetValueClick: () => void;
+  onGetValueClick: (address?: string) => void;
   onAskQuestionClick: () => void;
 }
 
 export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValueHeroProps) {
+  const [address, setAddress] = useState('');
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -28,6 +33,11 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
     },
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onGetValueClick(address);
+  };
+
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-gray-900">
       <div
@@ -42,7 +52,7 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
 
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="max-w-4xl text-center"
+          className="max-w-3xl w-full text-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -58,31 +68,50 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
           <motion.p
             variants={itemVariants}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-8 text-lg text-gray-100 sm:text-xl max-w-2xl mx-auto"
+            className="mb-10 text-lg text-gray-200 sm:text-xl max-w-2xl mx-auto leading-relaxed"
           >
-            Automated estimates often miss key variables. Accurate valuation requires analysis of comparable sales, current competition, and buyer demand. Hamade Homes provides structured pricing insight across Oakland County, with additional coverage in parts of Livingston County.
+            Automated estimates often miss key variables. Accurate valuation requires analysis of comparable sales, current competition, and buyer demand.
           </motion.p>
 
           <motion.div
             variants={itemVariants}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-6"
+            className="flex flex-col items-center gap-3"
           >
-            <Button
-              onClick={onGetValueClick}
-              size="lg"
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold text-lg h-auto py-3 px-8"
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col sm:flex-row w-full max-w-2xl gap-3"
             >
-              Get Accurate Home Value
-            </Button>
-            <Button
-              onClick={onAskQuestionClick}
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white/10 font-semibold text-lg h-auto py-3 px-8"
-            >
-              Ask a Question
-            </Button>
+              <Input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                placeholder="Enter your property address"
+                className="flex-1 h-14 text-base px-5 bg-white text-gray-900 border-0 rounded-lg placeholder:text-gray-400 focus-visible:ring-2 focus-visible:ring-red-500"
+              />
+              <Button
+                type="submit"
+                size="lg"
+                className="h-14 bg-red-600 hover:bg-red-700 text-white font-semibold text-base px-7 rounded-lg whitespace-nowrap flex items-center gap-2 sm:w-auto w-full"
+              >
+                Get My True Market Value
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </form>
+
+            <p className="text-sm text-gray-400 mt-1">
+              Free. No obligation. Delivered within 24 hours.
+            </p>
+
+            <div className="mt-4">
+              <button
+                type="button"
+                onClick={onAskQuestionClick}
+                className="text-sm text-gray-400 hover:text-gray-200 underline underline-offset-2 transition-colors duration-200"
+              >
+                Have a question first? Ask here.
+              </button>
+            </div>
           </motion.div>
         </motion.div>
       </div>

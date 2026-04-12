@@ -17,9 +17,11 @@ import { trackEvent } from '@/lib/gtag';
 
 export default function HomeValuePage() {
   const [isHomeValueModalOpen, setIsHomeValueModalOpen] = useState(false);
+  const [heroAddress, setHeroAddress] = useState('');
 
-  const handleOpenHomeValueModal = () => {
+  const handleOpenHomeValueModal = (address?: string) => {
     trackEvent('home_value_modal_open');
+    if (address !== undefined) setHeroAddress(address);
     setIsHomeValueModalOpen(true);
   };
 
@@ -166,7 +168,7 @@ export default function HomeValuePage() {
         <HomeValueFinalCTA onGetValueClick={handleOpenHomeValueModal} onAskQuestionClick={handleOpenChatbot} />
         <Footer />
         <FAB onBookConsultClick={handleOpenHomeValueModal} />
-        <HomeValueModal open={isHomeValueModalOpen} onOpenChange={setIsHomeValueModalOpen} />
+        <HomeValueModal open={isHomeValueModalOpen} onOpenChange={setIsHomeValueModalOpen} initialAddress={heroAddress} />
       </main>
     </>
   );

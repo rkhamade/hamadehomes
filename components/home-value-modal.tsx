@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,6 +12,7 @@ import { trackEvent } from '@/lib/gtag';
 interface HomeValueModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  initialAddress?: string;
 }
 
 type Step = 1 | 2 | 3;
@@ -27,13 +28,13 @@ interface FormData {
   timeline: string;
 }
 
-export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
+export function HomeValueModal({ open, onOpenChange, initialAddress = '' }: HomeValueModalProps) {
   const [step, setStep] = useState<Step>(1);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({
-    address: '',
+    address: initialAddress,
     addressLine2: '',
     city: '',
     zipCode: '',
@@ -42,6 +43,12 @@ export function HomeValueModal({ open, onOpenChange }: HomeValueModalProps) {
     phone: '',
     timeline: '',
   });
+
+  useEffect(() => {
+    if (open && initialAddress) {
+      setFormData((prev) => ({ ...prev, address: initialAddress }));
+    }
+  }, [open, initialAddress]);
 
   const handleInputChange = (field: keyof FormData) => (
     e: React.ChangeEvent<HTMLInputElement>
