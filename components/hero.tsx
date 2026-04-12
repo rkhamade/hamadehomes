@@ -11,6 +11,7 @@ interface HeroProps {
 
 export function Hero({ onBookConsultClick, onAskQuestionClick }: HeroProps) {
   const bgRef = useRef<HTMLDivElement>(null);
+  const depthRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let rafId: number;
@@ -18,6 +19,9 @@ export function Hero({ onBookConsultClick, onAskQuestionClick }: HeroProps) {
       rafId = requestAnimationFrame(() => {
         if (bgRef.current) {
           bgRef.current.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+        }
+        if (depthRef.current) {
+          depthRef.current.style.transform = `translateY(${window.scrollY * 0.55}px)`;
         }
       });
     };
@@ -51,10 +55,11 @@ export function Hero({ onBookConsultClick, onAskQuestionClick }: HeroProps) {
     <section className="relative min-h-screen w-full overflow-hidden bg-gray-900">
       <div
         ref={bgRef}
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 z-0 bg-cover bg-no-repeat animate-hero-drift"
         style={{
-          backgroundImage: 'url("https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1600")',
+          backgroundImage: 'url("https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1920")',
           backgroundColor: '#1a1a1a',
+          backgroundPosition: 'center 30%',
           willChange: 'transform',
           top: '-15%',
           bottom: '-15%',
@@ -63,7 +68,19 @@ export function Hero({ onBookConsultClick, onAskQuestionClick }: HeroProps) {
       />
 
       <div
-        className="absolute inset-0 z-1 animate-dot-drift"
+        ref={depthRef}
+        className="absolute inset-0 z-1"
+        style={{
+          background: 'radial-gradient(ellipse at 60% 70%, rgba(0,0,0,0.45) 0%, transparent 70%)',
+          willChange: 'transform',
+          top: '-15%',
+          bottom: '-15%',
+          height: '130%',
+        }}
+      />
+
+      <div
+        className="absolute inset-0 z-2 animate-dot-drift"
         style={{
           backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.45) 1px, transparent 1px)',
           backgroundSize: '40px 40px',
@@ -71,7 +88,7 @@ export function Hero({ onBookConsultClick, onAskQuestionClick }: HeroProps) {
         }}
       />
 
-      <div className="absolute inset-0 z-2 bg-black/50" />
+      <div className="absolute inset-0 z-3 bg-black/55" />
 
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
         <motion.div
