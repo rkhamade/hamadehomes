@@ -116,7 +116,8 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
           <motion.h1
             variants={itemVariants}
             transition={{ duration: 0.8 }}
-            className="mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl drop-shadow-lg"
+            className="mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl"
+            style={{ textShadow: '0 0 8px rgba(0,0,0,0.9), 1px 1px 0 rgba(0,0,0,0.8), -1px -1px 0 rgba(0,0,0,0.8)' }}
           >
             Get Your True Market Value in Oakland County
           </motion.h1>
@@ -124,7 +125,8 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
           <motion.p
             variants={itemVariants}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-10 text-lg text-white/90 sm:text-xl max-w-2xl mx-auto leading-relaxed drop-shadow-md"
+            className="mb-10 text-lg text-white/90 sm:text-xl max-w-2xl mx-auto leading-relaxed"
+            style={{ textShadow: '0 1px 4px rgba(0,0,0,0.85), 0 0 6px rgba(0,0,0,0.7)' }}
           >
             Real pricing insight based on local comps, demand, and competition. Not an algorithm. Delivered within 24 hours.
           </motion.p>
