@@ -6,6 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ArrowRight } from 'lucide-react';
 
+const HERO_IMAGES = [
+  'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'https://images.pexels.com/photos/1370704/pexels-photo-1370704.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'https://images.pexels.com/photos/17205886/pexels-photo-17205886.jpeg?auto=compress&cs=tinysrgb&w=1600',
+];
+
 interface HomeValueHeroProps {
   onGetValueClick: (address?: string) => void;
   onAskQuestionClick: () => void;
@@ -13,6 +19,7 @@ interface HomeValueHeroProps {
 
 export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValueHeroProps) {
   const [address, setAddress] = useState('');
+  const [currentImage, setCurrentImage] = useState(0);
   const bgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -29,6 +36,13 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
       window.removeEventListener('scroll', handleScroll);
       cancelAnimationFrame(rafId);
     };
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 7000);
+    return () => clearInterval(interval);
   }, []);
 
   const containerVariants = {
@@ -59,16 +73,27 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
     <section className="relative min-h-screen w-full overflow-hidden bg-gray-900">
       <div
         ref={bgRef}
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url("https://images.pexels.com/photos/209315/pexels-photo-209315.jpeg?auto=compress&cs=tinysrgb&w=1600")',
-          backgroundColor: '#1a1a1a',
           willChange: 'transform',
           top: '-15%',
           bottom: '-15%',
           height: '130%',
         }}
-      />
+      >
+        {HERO_IMAGES.map((src, index) => (
+          <div
+            key={src}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url("${src}")`,
+              backgroundColor: '#1a1a1a',
+              opacity: index === currentImage ? 1 : 0,
+              transition: 'opacity 1.5s ease-in-out',
+            }}
+          />
+        ))}
+      </div>
 
       <div
         className="absolute inset-0 z-1 animate-dot-drift"
