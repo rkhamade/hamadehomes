@@ -7,9 +7,9 @@ import Link from 'next/link';
 export function Footer() {
   return (
     <footer className="bg-white">
-      <div className="bg-white py-12 sm:py-16 lg:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-3">
+      <div className="flex flex-col lg:flex-row">
+        <div className="flex-1 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 lg:pl-[max(2rem,calc((100vw-80rem)/2+2rem))]">
+          <div className="grid gap-8 sm:grid-cols-2 max-w-2xl">
             <div className="flex flex-col justify-center">
               <Image
                 src="/KellerWilliams_Realty_Living_Logo_RGB.jpg"
@@ -83,7 +83,7 @@ export function Footer() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-8 justify-center">
               <div>
                 <h3 className="text-gray-900 font-semibold text-sm uppercase tracking-wider mb-4">Pages</h3>
                 <ul className="space-y-3">
@@ -102,20 +102,33 @@ export function Footer() {
                 </ul>
               </div>
             </div>
-
-            <div className="relative aspect-square w-full rounded-lg overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2943.7658484287867!2d-83.78391!3d42.52941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824ac94fff5ec99%3A0x1a8c5e4e7a8e5e5e!2s130%20W%20Grand%20River%20Ave%2C%20Brighton%2C%20MI%2048116!5e0!3m2!1sen!2sus!4v1645000000000!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Office Location Map"
-              />
-            </div>
           </div>
+        </div>
+
+        <div className="hidden lg:block" style={{ aspectRatio: '1 / 1', alignSelf: 'stretch' }}>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2943.7658484287867!2d-83.78391!3d42.52941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824ac94fff5ec99%3A0x1a8c5e4e7a8e5e5e!2s130%20W%20Grand%20River%20Ave%2C%20Brighton%2C%20MI%2048116!5e0!3m2!1sen!2sus!4v1645000000000!5m2!1sen!2sus"
+            width="100%"
+            height="100%"
+            style={{ border: 0, display: 'block' }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Office Location Map"
+          />
+        </div>
+
+        <div className="aspect-square w-full lg:hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2943.7658484287867!2d-83.78391!3d42.52941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824ac94fff5ec99%3A0x1a8c5e4e7a8e5e5e!2s130%20W%20Grand%20River%20Ave%2C%20Brighton%2C%20MI%2048116!5e0!3m2!1sen!2sus!4v1645000000000!5m2!1sen!2sus"
+            width="100%"
+            height="100%"
+            style={{ border: 0, display: 'block' }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Office Location Map"
+          />
         </div>
       </div>
 
