@@ -96,31 +96,31 @@ export function Footer() {
         </div>
 
         {/* ── MIDDLE column: pages navigation ── */}
-        <div className="flex-1 py-12 sm:py-16 lg:py-20 px-10 lg:px-16 flex flex-col items-center justify-center lg:border-l lg:border-gray-100">
-          <h3 className="text-gray-900 font-semibold text-sm uppercase tracking-wider mb-5">Pages</h3>
-          <ul className="space-y-3">
+        <div className="py-12 sm:py-16 lg:py-20 pl-8 lg:pl-12 pr-12 lg:pr-16 flex flex-col justify-start" style={{ paddingTop: '5rem' }}>
+          <h3 className="text-gray-500 font-medium text-xs uppercase tracking-widest mb-4">Pages</h3>
+          <ul className="space-y-2">
             <li>
-              <Link href="/" className="text-gray-700 hover:text-red-600 transition-colors">
+              <Link href="/" className="text-gray-700 hover:text-red-600 transition-colors text-sm">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/buy" className="text-gray-700 hover:text-red-600 transition-colors">
+              <Link href="/buy" className="text-gray-700 hover:text-red-600 transition-colors text-sm">
                 Buy
               </Link>
             </li>
             <li>
-              <Link href="/sell" className="text-gray-700 hover:text-red-600 transition-colors">
+              <Link href="/sell" className="text-gray-700 hover:text-red-600 transition-colors text-sm">
                 Sell
               </Link>
             </li>
             <li>
-              <Link href="/home-value" className="text-gray-700 hover:text-red-600 transition-colors">
+              <Link href="/home-value" className="text-gray-700 hover:text-red-600 transition-colors text-sm">
                 Home Value
               </Link>
             </li>
             <li>
-              <Link href="/start-your-search" className="text-gray-700 hover:text-red-600 transition-colors">
+              <Link href="/start-your-search" className="text-gray-700 hover:text-red-600 transition-colors text-sm">
                 Start Your Search
               </Link>
             </li>
