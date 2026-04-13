@@ -267,7 +267,7 @@ function HeroSection({
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
-            'url("https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg?auto=compress&cs=tinysrgb&w=1600")',
+            'url("https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600")',
           backgroundColor: '#1a1a1a',
           willChange: 'transform',
           top: '-15%',
@@ -288,7 +288,7 @@ function HeroSection({
         }}
       />
 
-      <div className="absolute inset-0 z-[2] bg-black/55" />
+      <div className="absolute inset-0 z-[2] bg-black/72" />
 
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -300,6 +300,7 @@ function HeroSection({
           <motion.h1
             variants={headlineVariants}
             className="mb-3 text-4xl font-bold text-white sm:text-5xl lg:text-6xl"
+            style={{ textShadow: '0 2px 16px rgba(0,0,0,0.7)' }}
           >
             Start Your Home Search in Oakland County
           </motion.h1>
@@ -311,13 +312,14 @@ function HeroSection({
 
           <motion.p
             variants={textVariants}
-            className="mb-8 text-lg text-gray-100 sm:text-xl max-w-2xl mx-auto"
+            className="mb-8 text-lg text-white sm:text-xl max-w-2xl mx-auto"
+            style={{ textShadow: '0 1px 10px rgba(0,0,0,0.6)' }}
           >
             Get matched with homes based on budget, timeline, and location goals. Hamade Homes serves Oakland County, with additional coverage in parts of Livingston County.
           </motion.p>
 
           <motion.div
-            className="flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-6"
+            className="flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-8"
             variants={{
               hidden: { opacity: 0 },
               visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
@@ -337,7 +339,7 @@ function HeroSection({
                 onClick={onAskQuestion}
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10 font-semibold text-lg h-auto py-3 px-8"
+                className="border-white/60 text-white/80 hover:bg-white/10 hover:text-white font-medium text-lg h-auto py-3 px-8"
               >
                 Ask a Question
               </Button>
@@ -346,7 +348,8 @@ function HeroSection({
 
           <motion.p
             variants={trustVariants}
-            className="mt-6 text-sm text-white/50 tracking-wide"
+            className="mt-6 text-sm text-white/85 tracking-wide"
+            style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}
           >
             Free guidance. No obligation. Fast response.
           </motion.p>
@@ -414,7 +417,7 @@ function WhatBuyersGetSection() {
   };
 
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24">
+    <section className="bg-white pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-12 lg:pb-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -427,7 +430,7 @@ function WhatBuyersGetSection() {
             What Buyers Get
           </h2>
           <p className="text-lg text-gray-600">
-            Focused support at every stage of the home search
+            Everything needed to move from browsing to buying with more clarity.
           </p>
         </motion.div>
 
@@ -464,7 +467,7 @@ function HowItWorksSection() {
   const steps = [
     {
       number: '01',
-      title: 'Share Goals',
+      title: 'Define Your Criteria',
       description: 'Share preferred areas, budget, and timeline to build a focused starting point.',
     },
     {
@@ -504,7 +507,7 @@ function HowItWorksSection() {
   };
 
   return (
-    <section className="bg-gray-50 py-16 sm:py-20 lg:py-24">
+    <section className="bg-gray-50 pt-10 sm:pt-12 lg:pt-14 pb-16 sm:pb-20 lg:pb-24">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

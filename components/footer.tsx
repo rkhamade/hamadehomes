@@ -108,8 +108,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="hidden lg:flex items-center justify-center" style={{ width: '50%', flexShrink: 0 }}>
-          <div style={{ width: '100%', aspectRatio: '1 / 1' }}>
+        <div className="hidden lg:block self-stretch" style={{ width: '560px', flexShrink: 0 }}>
+          <div style={{ width: '560px', height: '560px', position: 'sticky', top: 0 }}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2943.7658484287867!2d-83.78391!3d42.52941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824ac94fff5ec99%3A0x1a8c5e4e7a8e5e5e!2s130%20W%20Grand%20River%20Ave%2C%20Brighton%2C%20MI%2048116!5e0!3m2!1sen!2sus!4v1645000000000!5m2!1sen!2sus"
               width="100%"
