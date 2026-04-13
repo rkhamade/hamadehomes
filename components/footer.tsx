@@ -99,6 +99,9 @@ export function Footer() {
                   <li>
                     <Link href="/home-value" className="text-gray-700 hover:text-red-600 transition-colors">Home Value</Link>
                   </li>
+                  <li>
+                    <Link href="/start-your-search" className="text-gray-700 hover:text-red-600 transition-colors">Start Your Search</Link>
+                  </li>
                 </ul>
               </div>
             </div>
