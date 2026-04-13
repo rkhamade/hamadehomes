@@ -10,11 +10,14 @@ const MAP_SRC =
 export function Footer() {
   return (
     <footer className="bg-white">
-      {/* White section — position:relative so the map can be absolutely anchored */}
-      <div className="relative flex flex-col lg:flex-row lg:items-stretch overflow-hidden">
+      {/* White section — strict 3-column grid on desktop, stacked on mobile */}
+      <div
+        className="flex flex-col lg:grid lg:items-stretch overflow-hidden"
+        style={{ gridTemplateColumns: '1.15fr 0.55fr auto' }}
+      >
 
-        {/* ── LEFT column: identity + contact ── */}
-        <div className="flex-1 py-12 sm:py-16 lg:py-20 pl-8 sm:pl-12 lg:pl-16 pr-8 sm:pr-10 lg:pr-12 lg:pr-0">
+        {/* ── COLUMN 1: identity + contact ── */}
+        <div className="py-12 sm:py-16 lg:py-20 pl-8 sm:pl-12 lg:pl-16 pr-8 sm:pr-12 lg:pr-10">
           <div className="flex flex-col max-w-xs">
             <Image
               src="/KellerWilliams_Realty_Living_Logo_RGB.jpg"
@@ -95,8 +98,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* ── MIDDLE column: pages navigation ── */}
-        <div className="py-12 sm:py-16 lg:py-20 pl-8 lg:pl-12 pr-12 lg:pr-16 flex flex-col justify-start" style={{ paddingTop: '5rem' }}>
+        {/* ── COLUMN 2: pages navigation ── */}
+        <div className="py-12 sm:py-16 lg:py-20 lg:pt-20 flex flex-col justify-start">
           <h3 className="text-gray-500 font-medium text-xs uppercase tracking-widest mb-4">Pages</h3>
           <ul className="space-y-2">
             <li>
@@ -127,19 +130,9 @@ export function Footer() {
           </ul>
         </div>
 
-        {/* ── RIGHT column: full-height square map (desktop) ── */}
-        {/*
-          The map is absolutely positioned to fill the exact top/bottom of the white
-          section. aspect-ratio:1/1 makes width === height automatically.
-          A spacer div with the same aspect-ratio pushes the left columns left.
-        */}
+        {/* ── COLUMN 3: square map — desktop only, full row height ── */}
         <div
-          className="hidden lg:block"
-          style={{ width: '560px', flexShrink: 0 }}
-        />
-
-        <div
-          className="hidden lg:block absolute top-0 right-0 bottom-0"
+          className="hidden lg:block self-stretch"
           style={{ aspectRatio: '1 / 1' }}
         >
           <iframe
