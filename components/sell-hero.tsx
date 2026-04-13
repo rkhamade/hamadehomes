@@ -124,6 +124,81 @@ export function SellHero({ onRequestValueClick, onAskQuestionClick }: SellHeroPr
 
       <div className="absolute inset-0 z-[2] bg-black/50" />
 
+      <div className="absolute inset-0 z-[3] pointer-events-none overflow-hidden">
+        <svg
+          className="absolute bottom-0 left-0 right-0 w-full"
+          style={{ height: '55%', opacity: 0.13 }}
+          viewBox="0 0 1200 320"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {[60, 120, 180, 240].map((y) => (
+            <line
+              key={y}
+              x1="0"
+              y1={y}
+              x2="1200"
+              y2={y}
+              stroke="white"
+              strokeWidth="0.8"
+              strokeOpacity="0.35"
+            />
+          ))}
+          {[0, 200, 400, 600, 800, 1000, 1200].map((x) => (
+            <line
+              key={x}
+              x1={x}
+              y1="0"
+              x2={x}
+              y2="320"
+              stroke="white"
+              strokeWidth="0.5"
+              strokeOpacity="0.2"
+            />
+          ))}
+          <motion.path
+            d="M 0 300 C 150 280, 250 260, 350 240 S 500 200, 600 170 S 780 120, 900 90 S 1100 40, 1200 20"
+            stroke="white"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            fill="none"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{
+              pathLength: [0, 1, 1, 0],
+              opacity: [0, 0.9, 0.6, 0],
+            }}
+            transition={{
+              duration: 8,
+              times: [0, 0.35, 0.85, 1],
+              ease: 'easeInOut',
+              repeat: Infinity,
+              repeatDelay: 1.5,
+            }}
+          />
+          <motion.circle
+            r="5"
+            fill="white"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 1, 1, 0] }}
+            transition={{
+              duration: 8,
+              times: [0, 0.35, 0.85, 1],
+              ease: 'easeInOut',
+              repeat: Infinity,
+              repeatDelay: 1.5,
+            }}
+          >
+            <animateMotion
+              dur="2.8s"
+              begin="0s"
+              repeatCount="indefinite"
+              path="M 0 300 C 150 280, 250 260, 350 240 S 500 200, 600 170 S 780 120, 900 90 S 1100 40, 1200 20"
+            />
+          </motion.circle>
+        </svg>
+      </div>
+
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
         <motion.div
           className="max-w-4xl text-center"

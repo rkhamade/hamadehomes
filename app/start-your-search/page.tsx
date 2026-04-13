@@ -288,9 +288,60 @@ function HeroSection({
         }}
       />
 
-      <div className="absolute inset-0 z-[2] bg-black/72" />
+      <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: '700px',
+            height: '700px',
+            top: '-10%',
+            left: '-15%',
+            background: 'radial-gradient(circle, rgba(251,191,36,0.22) 0%, rgba(245,158,11,0.10) 45%, transparent 70%)',
+            filter: 'blur(40px)',
+          }}
+          animate={{
+            x: [0, 60, 20, 80, 0],
+            y: [0, 40, 80, 20, 0],
+          }}
+          transition={{ duration: 28, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: '500px',
+            height: '500px',
+            top: '30%',
+            right: '-8%',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.10) 0%, rgba(254,243,199,0.12) 40%, transparent 70%)',
+            filter: 'blur(50px)',
+          }}
+          animate={{
+            x: [0, -40, -80, -20, 0],
+            y: [0, 60, 20, 80, 0],
+          }}
+          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
+        />
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: '600px',
+            height: '600px',
+            bottom: '-15%',
+            left: '30%',
+            background: 'radial-gradient(circle, rgba(252,211,77,0.16) 0%, rgba(251,191,36,0.08) 50%, transparent 70%)',
+            filter: 'blur(60px)',
+          }}
+          animate={{
+            x: [0, -30, 50, -10, 0],
+            y: [0, -50, -20, -70, 0],
+          }}
+          transition={{ duration: 34, repeat: Infinity, ease: 'easeInOut', delay: 10 }}
+        />
+      </div>
 
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 z-[3] bg-black/72" />
+
+      <div className="relative z-[10] flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
         <motion.div
           className="max-w-4xl text-center"
           variants={containerVariants}
