@@ -96,7 +96,7 @@ export function Footer() {
         </div>
 
         {/* ── MIDDLE column: pages navigation ── */}
-        <div className="py-12 sm:py-16 lg:py-20 px-10 lg:px-16 flex flex-col justify-center lg:border-l lg:border-gray-100">
+        <div className="flex-1 py-12 sm:py-16 lg:py-20 px-10 lg:px-16 flex flex-col items-center justify-center lg:border-l lg:border-gray-100">
           <h3 className="text-gray-900 font-semibold text-sm uppercase tracking-wider mb-5">Pages</h3>
           <ul className="space-y-3">
             <li>
@@ -134,11 +134,9 @@ export function Footer() {
           A spacer div with the same aspect-ratio pushes the left columns left.
         */}
         <div
-          className="hidden lg:block self-stretch"
-          style={{ aspectRatio: '1 / 1', flexShrink: 0 }}
-        >
-          {/* Invisible spacer — reserves horizontal space equal to the map's width */}
-        </div>
+          className="hidden lg:block"
+          style={{ width: '560px', flexShrink: 0 }}
+        />
 
         <div
           className="hidden lg:block absolute top-0 right-0 bottom-0"
