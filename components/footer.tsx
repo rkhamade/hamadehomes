@@ -99,31 +99,31 @@ export function Footer() {
         </div>
 
         {/* ── COLUMN 2: pages navigation ── */}
-        <div className="py-12 sm:py-16 lg:py-20 lg:pt-20 flex flex-col justify-start">
+        <div className="py-12 sm:py-16 lg:py-20 flex flex-col justify-center">
           <h3 className="text-gray-500 font-medium text-xs uppercase tracking-widest mb-4">Pages</h3>
           <ul className="space-y-2">
             <li>
-              <Link href="/" className="text-gray-700 hover:text-red-600 transition-colors text-sm">
+              <Link href="/" className="text-gray-700 hover:text-red-600 transition-colors text-base">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/buy" className="text-gray-700 hover:text-red-600 transition-colors text-sm">
+              <Link href="/buy" className="text-gray-700 hover:text-red-600 transition-colors text-base">
                 Buy
               </Link>
             </li>
             <li>
-              <Link href="/sell" className="text-gray-700 hover:text-red-600 transition-colors text-sm">
+              <Link href="/sell" className="text-gray-700 hover:text-red-600 transition-colors text-base">
                 Sell
               </Link>
             </li>
             <li>
-              <Link href="/home-value" className="text-gray-700 hover:text-red-600 transition-colors text-sm">
+              <Link href="/home-value" className="text-gray-700 hover:text-red-600 transition-colors text-base">
                 Home Value
               </Link>
             </li>
             <li>
-              <Link href="/start-your-search" className="text-gray-700 hover:text-red-600 transition-colors text-sm">
+              <Link href="/start-your-search" className="text-gray-700 hover:text-red-600 transition-colors text-base">
                 Start Your Search
               </Link>
             </li>
