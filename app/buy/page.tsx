@@ -60,14 +60,20 @@ export default function BuyPage() {
     },
     areaServed: [
       {
-        '@type': 'City',
-        name: 'Oakland County',
-        '@id': 'https://en.wikipedia.org/wiki/Oakland_County,_Michigan',
+        '@type': 'AdministrativeArea',
+        name: 'Oakland County, Michigan',
       },
       {
-        '@type': 'City',
-        name: 'Livingston County',
-        '@id': 'https://en.wikipedia.org/wiki/Livingston_County,_Michigan',
+        '@type': 'AdministrativeArea',
+        name: 'Livingston County, Michigan',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Wayne County, Michigan',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Washtenaw County, Michigan',
       },
     ],
     priceRange: '$$',

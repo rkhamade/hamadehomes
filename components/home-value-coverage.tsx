@@ -27,12 +27,12 @@ export function HomeValueCoverage({ onGetValueClick }: HomeValueCoverageProps) {
             Primary Focus: Oakland County
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto">
-            Hamade Homes operates primarily within{' '}
+            Hamade Homes primarily serves{' '}
             <span className="font-semibold text-gray-900">Oakland County</span>, including Novi,
-            Troy, Birmingham, Rochester, Royal Oak, and Bloomfield Hills. Concentrated geographic
-            focus enables stronger pricing accuracy and faster interpretation of market changes.
-            Additional service extends into parts of{' '}
-            <span className="font-semibold text-gray-900">Livingston County</span>.
+            Troy, Birmingham, Rochester, Royal Oak, and Bloomfield Hills, with additional coverage
+            across Livingston County, western Wayne County, and northern Washtenaw County.
+            Concentrated geographic focus enables stronger pricing accuracy and faster
+            interpretation of market changes.
           </p>
           <Button
             onClick={onGetValueClick}

@@ -8,7 +8,7 @@ export function TrustBar() {
     {
       icon: MapPin,
       title: 'Local Market Expertise',
-      description: 'Deep knowledge of Brighton, Howell, and Livingston County markets',
+      description: 'Local market knowledge across Oakland County and surrounding Southeast Michigan areas',
     },
     {
       icon: Lightbulb,

@@ -26,7 +26,7 @@ export function SellerCoverageArea({ onRequestValueClick }: SellerCoverageAreaPr
             Primary Focus: Oakland County
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed mb-6">
-            Hamade Homes operates primarily within <span className="font-semibold text-gray-900">Oakland County</span>, including Novi, Troy, Birmingham, Rochester, Royal Oak, and Bloomfield Hills. Additional service is provided in parts of <span className="font-semibold text-gray-900">Livingston County</span>. This geographic focus enables stronger pricing accuracy, deeper market insight, and more reliable valuation specific to local submarket conditions.
+            Hamade Homes primarily serves <span className="font-semibold text-gray-900">Oakland County</span>, including Novi, Troy, Birmingham, Rochester, Royal Oak, and Bloomfield Hills, with additional coverage across Livingston County, western Wayne County, and northern Washtenaw County. This geographic focus enables stronger pricing accuracy, deeper market insight, and more reliable valuation specific to local submarket conditions.
           </p>
           <Button
             onClick={onRequestValueClick}

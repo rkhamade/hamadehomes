@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Hamade Homes | Oakland County Real Estate',
-  description: 'Expert real estate services in Oakland County and Livingston County. Strategic guidance for buyers, sellers, and investors.',
+  description: 'Expert real estate services in Oakland County, with additional coverage across Livingston County, western Wayne County, and northern Washtenaw County. Strategic guidance for buyers, sellers, and investors.',
   metadataBase: new URL('https://hamadehomes.com'),
   icons: {
     icon: [

@@ -222,7 +222,7 @@ export function SellHero({ onRequestValueClick, onAskQuestionClick }: SellHeroPr
             variants={textVariants}
             className="mb-8 text-lg text-gray-100 sm:text-xl max-w-2xl mx-auto"
           >
-            Data-driven pricing, strategic positioning, and focused negotiation across Oakland County and parts of Livingston County deliver stronger outcomes.
+            Data-driven pricing, strategic positioning, and focused negotiation deliver stronger outcomes. Hamade Homes primarily serves Oakland County, with additional coverage across Livingston County, western Wayne County, and northern Washtenaw County.
           </motion.p>
 
           <motion.div

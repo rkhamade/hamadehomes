@@ -65,14 +65,20 @@ export default function StartYourSearchPage() {
     },
     areaServed: [
       {
-        '@type': 'City',
-        name: 'Oakland County',
-        '@id': 'https://en.wikipedia.org/wiki/Oakland_County,_Michigan',
+        '@type': 'AdministrativeArea',
+        name: 'Oakland County, Michigan',
       },
       {
-        '@type': 'City',
-        name: 'Livingston County',
-        '@id': 'https://en.wikipedia.org/wiki/Livingston_County,_Michigan',
+        '@type': 'AdministrativeArea',
+        name: 'Livingston County, Michigan',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Wayne County, Michigan',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Washtenaw County, Michigan',
       },
     ],
     priceRange: '$$',
@@ -117,7 +123,7 @@ export default function StartYourSearchPage() {
         name: 'What areas are covered?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Hamade Homes serves Oakland County, including Novi, Troy, Birmingham, Rochester, Royal Oak, and Bloomfield Hills, with additional coverage in parts of Livingston County.',
+          text: 'Hamade Homes primarily serves Oakland County, including Novi, Troy, Birmingham, Rochester, Royal Oak, and Bloomfield Hills, with additional coverage across Livingston County, western Wayne County, and northern Washtenaw County.',
         },
       },
       {
@@ -366,7 +372,7 @@ function HeroSection({
             className="mb-8 text-lg text-white sm:text-xl max-w-2xl mx-auto"
             style={{ textShadow: '0 1px 10px rgba(0,0,0,0.6)' }}
           >
-            Get matched with homes based on budget, timeline, and location goals. Hamade Homes serves Oakland County, with additional coverage in parts of Livingston County.
+            Get matched with homes based on budget, timeline, and location goals. Hamade Homes primarily serves Oakland County, with additional coverage across Livingston County, western Wayne County, and northern Washtenaw County.
           </motion.p>
 
           <motion.div
@@ -619,12 +625,11 @@ function OaklandCountySection() {
             Oakland County Focus
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
-            Hamade Homes serves Oakland County, including{' '}
+            Hamade Homes primarily serves Oakland County, including{' '}
             <span className="font-semibold text-gray-900">
               Novi, Troy, Birmingham, Rochester, Royal Oak, and Bloomfield Hills
             </span>
-            , with additional coverage in parts of{' '}
-            <span className="font-semibold text-gray-900">Livingston County</span>.
+            , with additional coverage across Livingston County, western Wayne County, and northern Washtenaw County.
           </p>
         </motion.div>
       </div>
@@ -652,7 +657,7 @@ function FAQSection() {
     {
       question: 'What areas are covered?',
       answer:
-        'Hamade Homes serves Oakland County, including Novi, Troy, Birmingham, Rochester, Royal Oak, and Bloomfield Hills, with additional coverage in parts of Livingston County.',
+        'Hamade Homes primarily serves Oakland County, including Novi, Troy, Birmingham, Rochester, Royal Oak, and Bloomfield Hills, with additional coverage across Livingston County, western Wayne County, and northern Washtenaw County.',
     },
     {
       question: 'Can questions be asked before booking a consult?',

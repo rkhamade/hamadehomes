@@ -26,9 +26,9 @@ export function HomeValueFAQ() {
         'A detailed home value analysis is typically prepared and delivered within 24 hours of submission. The timeline allows for thorough review of comparable sales and current competition rather than an instant automated result.',
     },
     {
-      question: 'Does this apply to Livingston County?',
+      question: 'Does this apply to other counties?',
       answer:
-        'Yes. While Oakland County is the primary service area, Hamade Homes also covers parts of Livingston County. Properties in Livingston County are evaluated using the same structured process, with analysis tailored to local submarket conditions.',
+        'Yes. While Oakland County is the primary service area, Hamade Homes also provides coverage across Livingston County, western Wayne County, and northern Washtenaw County. Properties in these areas are evaluated using the same structured process, with analysis tailored to local submarket conditions.',
     },
     {
       question: 'Can questions be asked before listing?',

@@ -128,7 +128,7 @@ export function HomeValueHero({ onGetValueClick, onAskQuestionClick }: HomeValue
             className="mb-10 text-lg text-white/90 sm:text-xl max-w-2xl mx-auto leading-relaxed"
             style={{ textShadow: '0 1px 4px rgba(0,0,0,0.85), 0 0 6px rgba(0,0,0,0.7)' }}
           >
-            Real pricing insight based on local comps, demand, and competition. Not an algorithm. Delivered within 24 hours.
+            Real pricing insight based on local comps, demand, and competition. Hamade Homes primarily serves Oakland County, with additional coverage across Livingston County, western Wayne County, and northern Washtenaw County.
           </motion.p>
 
           <motion.div

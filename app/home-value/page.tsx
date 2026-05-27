@@ -74,10 +74,10 @@ export default function HomeValuePage() {
       },
       {
         '@type': 'Question',
-        name: 'Does this apply to Livingston County?',
+        name: 'Does this apply to other counties?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes. While Oakland County is the primary service area, Hamade Homes also covers parts of Livingston County. Properties in Livingston County are evaluated using the same structured process, with analysis tailored to local submarket conditions.',
+          text: 'Yes. While Oakland County is the primary service area, Hamade Homes also provides coverage across Livingston County, western Wayne County, and northern Washtenaw County. Properties in these areas are evaluated using the same structured process, with analysis tailored to local submarket conditions.',
         },
       },
       {
@@ -111,11 +111,19 @@ export default function HomeValuePage() {
     areaServed: [
       {
         '@type': 'AdministrativeArea',
-        name: 'Oakland County, MI',
+        name: 'Oakland County, Michigan',
       },
       {
         '@type': 'AdministrativeArea',
-        name: 'Livingston County, MI',
+        name: 'Livingston County, Michigan',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Wayne County, Michigan',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Washtenaw County, Michigan',
       },
     ],
     priceRange: '$$',
