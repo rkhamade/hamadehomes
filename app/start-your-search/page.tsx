@@ -53,14 +53,14 @@ export default function StartYourSearchPage() {
     image: 'https://hamadehomes.com/logo.jpg',
     '@id': 'https://hamadehomes.com',
     url: 'https://hamadehomes.com',
-    telephone: '(248) 247-9014',
-    email: 'robhamade@kw.com',
+    telephone: '(269) 600-4397',
+    email: 'rob@hamadehomes.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '130 W Grand River Ave',
-      addressLocality: 'Brighton',
+      streetAddress: '39555 Orchard Hill Place, Suite 600',
+      addressLocality: 'Novi',
       addressRegion: 'MI',
-      postalCode: '48178',
+      postalCode: '48375',
       addressCountry: 'US',
     },
     areaServed: [
@@ -84,8 +84,8 @@ export default function StartYourSearchPage() {
     priceRange: '$$',
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 42.52941,
-      longitude: -83.78391,
+      latitude: 42.4784,
+      longitude: -83.4754,
     },
   };
 

@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { ConsultationModal } from '@/components/consultation-modal';
 
 const MAP_SRC =
-  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2943.7658484287867!2d-83.78391!3d42.52941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824ac94fff5ec99%3A0x1a8c5e4e7a8e5e5e!2s130%20W%20Grand%20River%20Ave%2C%20Brighton%2C%20MI%2048116!5e0!3m2!1sen!2sus!4v1645000000000!5m2!1sen!2sus';
+  'https://maps.google.com/maps?q=39555+Orchard+Hill+Place+Suite+600+Novi+MI+48375&t=&z=16&ie=UTF8&iwloc=&output=embed';
 
 export function Footer() {
   const [consultOpen, setConsultOpen] = useState(false);
@@ -25,22 +25,22 @@ export function Footer() {
         <div className="py-12 sm:py-16 lg:py-20 pl-8 sm:pl-12 lg:pl-16 pr-8 sm:pr-12 lg:pr-10">
           <div className="flex flex-col max-w-xs">
             <Image
-              src="/KellerWilliams_Realty_Living_Logo_RGB.jpg"
-              alt="KW Living - Keller Williams Realty"
-              width={260}
-              height={70}
+              src="/eXp_Realty_-_Black-01 copy.png"
+              alt="eXp Realty"
+              width={160}
+              height={65}
               className="mb-7"
             />
 
             <div className="space-y-1 mb-5">
-              <p className="text-gray-900 text-lg font-medium">130 W Grand River Ave.</p>
-              <p className="text-gray-900 text-lg">Brighton, MI 48178</p>
+              <p className="text-gray-900 text-lg font-medium">39555 Orchard Hill Place, Suite 600</p>
+              <p className="text-gray-900 text-lg">Novi, MI 48375</p>
             </div>
 
             <p className="text-gray-900 text-lg mb-7">
               Office{' '}
-              <a href="tel:8102275500" className="hover:text-red-600 transition-colors">
-                (810) 227-5500
+              <a href="tel:2696004397" className="hover:text-red-600 transition-colors">
+                (269) 600-4397
               </a>
             </p>
 
@@ -59,8 +59,8 @@ export function Footer() {
               </a>
             </p>
             <p className="text-gray-900 mb-6">
-              <a href="mailto:robhamade@kw.com" className="hover:text-red-600 transition-colors">
-                robhamade@kw.com
+              <a href="mailto:rob@hamadehomes.com" className="hover:text-red-600 transition-colors">
+                rob@hamadehomes.com
               </a>
             </p>
 
@@ -93,7 +93,7 @@ export function Footer() {
                 <Linkedin className="h-6 w-6" />
               </a>
               <a
-                href="mailto:robhamade@kw.com"
+                href="mailto:rob@hamadehomes.com"
                 className="text-gray-900 hover:text-red-600 transition-colors"
                 aria-label="Email"
               >
@@ -154,7 +154,7 @@ export function Footer() {
               Book a Consult
             </button>
             <a
-              href="mailto:robhamade@kw.com"
+              href="mailto:rob@hamadehomes.com"
               className="text-center text-gray-500 hover:text-red-600 text-sm transition-colors underline underline-offset-4"
             >
               Ask a Quick Question
