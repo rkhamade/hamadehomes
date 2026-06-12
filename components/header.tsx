@@ -53,19 +53,19 @@ export function Header({ onBookConsultClick, onAskQuestionClick }: HeaderProps) 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center gap-6">
-              <Link href="/">
-                <Image
-                  src="/KellerWilliams_Realty_Living_Logo_RGB.jpg"
-                  alt="Keller Williams Realty Living"
-                  width={200}
-                  height={60}
-                  className="h-12 w-auto cursor-pointer"
-                  priority
-                />
+              <Link href="/" className="text-2xl font-light tracking-wide text-gray-800 hover:text-red-600 transition-colors">
+                Hamade Homes
               </Link>
               <div className="hidden sm:block h-12 w-px bg-gray-300"></div>
-              <Link href="/" className="hidden sm:block text-2xl font-light tracking-wide text-gray-800 hover:text-red-600 transition-colors">
-                Hamade Homes
+              <Link href="/" className="hidden sm:block">
+                <Image
+                  src="/eXp_Realty_-_Black-01.png"
+                  alt="eXp Realty"
+                  width={120}
+                  height={50}
+                  className="h-10 w-auto cursor-pointer"
+                  priority
+                />
               </Link>
             </div>
 
